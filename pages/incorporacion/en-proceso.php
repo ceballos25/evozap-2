@@ -38,7 +38,7 @@
                   $conexion = new ConexionCrud('localhost', 'user_registro', 'Y,D:{`r0y3p\>-*pX8r#', 'evozap_202401');
                   $conn = $conexion->getConnection();
                   
-                  $sql = "SELECT * FROM participante";
+                  $sql = "SELECT * FROM participante WHERE estado_matricula <> 'Matriculado'";
                   
                   $resultado = $conn->query($sql);
                   

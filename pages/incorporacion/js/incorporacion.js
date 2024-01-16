@@ -55,7 +55,7 @@ $(document).ready(function () {
  
  
  $(document).ready(function () {
-    $('#habilitarEditar').click(function () {
+    $('#habilitarEditar').click(function () {      
        // Toggle para agregar/quitar la clase 'no-editar'
        $('#nombreParticipante').toggleClass('no-editar').prop('readonly', function (_, prop) {
           return !prop; // Invierte el valor actual del atributo 'readonly'
@@ -88,6 +88,8 @@ $(document).ready(function () {
        $('#detalleTratamientoParticipante').toggleClass('no-editar').prop('readonly', function (_, prop) {
           return !prop;
        });
+         // Agregar/quitar la clase 'd-none'
+        $('#habilitarEditar').addClass('d-none-fade');
     });
  });
  

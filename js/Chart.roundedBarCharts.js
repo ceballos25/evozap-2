@@ -1,7 +1,7 @@
 /*
 *   Rounded Rectangle Extension for Bar Charts and Horizontal Bar Charts
 *   Tested with Charts.js 2.7.0
-*/
+
 Chart.elements.Rectangle.prototype.draw = function() {
 
     var ctx = this._chart.ctx;
@@ -169,3 +169,4 @@ Chart.elements.Rectangle.prototype.draw = function() {
         ctx.stroke();
     }
 };
+*/
