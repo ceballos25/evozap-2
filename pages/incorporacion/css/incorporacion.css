@@ -1,0 +1,26 @@
+table td{
+    cursor: pointer !important;
+}
+
+.info{
+    width: 100% !important;
+}
+
+.no-editar {
+    cursor: not-allowed;
+    background: #e9ecef;
+    color: #000000;
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+.transition{
+    color: #000000;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.editar{
+    cursor: not-allowed;
+    background: #e9ecef;
+    color: #000000;
+}
+

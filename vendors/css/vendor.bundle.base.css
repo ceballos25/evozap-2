@@ -102,6 +102,23 @@
   width: 11px;
 }
 
+/*Mis estilos generales*/
+.table-shadow{
+  padding: 2%;
+  background-color: white;
+  border-radius: 5%;
+  
+}
+
+.dt-buttons{
+  float: right !important;
+  background: none !important;
+}
+
+.b-none{
+  border: none !important;
+}
+
 /* MS supports */
 @supports (-ms-overflow-style: none) {
   .ps {
