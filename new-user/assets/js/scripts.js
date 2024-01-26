@@ -60,7 +60,7 @@ jQuery(document).ready(function() {
 
     	
     	if( next_step ) {
-    		parent_fieldset.fadeOut(400, function() {
+    		parent_fieldset.fadeOut(150, function() {
     			// change icons
     			current_active_step.removeClass('active').addClass('activated').next().addClass('active');
     			// progress bar
@@ -106,7 +106,7 @@ camposNumeroDocumento.forEach(function(campo) {
     	var current_active_step = $(this).parents('.f1').find('.f1-step.active');
     	var progress_line = $(this).parents('.f1').find('.f1-progress-line');
     	
-    	$(this).parents('fieldset').fadeOut(400, function() {
+    	$(this).parents('fieldset').fadeOut(150, function() {
     		// change icons
     		current_active_step.removeClass('active').prev().removeClass('activated').addClass('active');
     		// progress bar

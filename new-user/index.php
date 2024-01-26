@@ -24,8 +24,20 @@
             <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
                <form method="POST" action="funciones/registro.php" class="f1" id="miFormulario">
                   <?php include ("funciones/config-actual-formulario.php") ?>
-                  <h3>Registro Entrenamiento <?php echo $nombre_entrenamiento ?></h3>
-                  <h5>Del <?php echo $del ?> al <?php echo $al ?> </h5>
+                  <?php 
+                        // Crear un formateador de fecha personalizado
+                        $formatter = new IntlDateFormatter('es_ES', IntlDateFormatter::SHORT, IntlDateFormatter::NONE);
+                        $formatter->setPattern("dd/MMM/y");  // Configurar el patrón deseado
+
+                        // Formatear la fecha de inicio ($del)
+                        $fechaInicio = $formatter->format(strtotime($del));
+
+                        // Formatear la fecha de fin ($al)
+                        $fechaFin = $formatter->format(strtotime($al));
+                     ?>
+                  
+                  <h3>Entrenamiento: <?php echo $nombre_entrenamiento ?></h3>
+                  <h4 class="text-capitalize">Fecha: Del <?php echo $fechaInicio ?> al <?php echo $fechaFin ?> </h4>
                   <div class="f1-steps">
                      <div class="f1-progress">
                         <div class="f1-progress-line" data-now-value="16.66" data-number-of-steps="3" style="width: 16.66%;"></div>
@@ -33,7 +45,6 @@
                      <div class="f1-step active">
                         <div class="f1-step-icon"><i class="fa-solid fa-address-card"></i></i></div>
                         <p>Tu información</p>
-                        <i class="fa-dark fa-address-card"></i>
                      </div>
                      <div class="f1-step">
                         <div class="f1-step-icon"><i class="fa-solid fa-user-plus"></i></div>
@@ -202,6 +213,10 @@
                         <button type="submit" class="btn btn-submit">Finalizar</button>
                      </div>
                   </fieldset>
+
+                  <input type="hidden" name="nombre_entrenamiento" value="<?php echo $nombre_entrenamiento ?>">                  
+                  <input type="hidden" name="fechaInicio" value="<?php echo $fechaInicio ?>">
+                  <input type="hidden" name="fechaFin" value="<?php echo $fechaFin ?>">
                   <!--fin -->
                </form>
             </div>

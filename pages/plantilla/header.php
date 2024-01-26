@@ -32,8 +32,7 @@ ini_set('display_errors', 1); ?>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
   <!-- Default theme -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/> 
-  <!-- JavaScript -->
-  <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
   
 <body>
 <div class="container-scroller">
@@ -137,13 +136,12 @@ ini_set('display_errors', 1); ?>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="/evozap-2/pages/usuarios/participantes.php">Participantes</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/evozap-2/pages/usuarios/staff.php">Staff</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/evozap-2/pages/usuarios/administrativos.php">Administrativos</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/evozap-2/pages/usuarios/general.php">General</a></li>
               </ul>
             </div>
           </li>
-          <li class="nav-item">
+
+          <!-- <li class="nav-item"> en desarrollo
             <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
               <i class="mdi mdi-school menu-icon"></i>
               <span class="menu-title">Formación</span>
@@ -155,7 +153,8 @@ ini_set('display_errors', 1); ?>
                 <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Módulo 2</a></li>
                 <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Módulo 3</a></li>              </ul>
             </div>
-          </li>
+          </li> -->
+
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
               <i class="mdi mdi-account-plus menu-icon"></i>
@@ -165,9 +164,9 @@ ini_set('display_errors', 1); ?>
             <div class="collapse" id="charts">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="/evozap-2/pages/incorporacion/en-proceso.php">En proceso</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Módulo 1</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Módulo 2</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Módulo 3</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Básico</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Avanzado</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Superior</a></li>
               </ul>
             </div>
           </li>
@@ -180,8 +179,7 @@ ini_set('display_errors', 1); ?>
             <div class="collapse" id="tables">
               <ul class="nav flex-column sub-menu">
               <li class="nav-item"> <a class="nav-link" target="_blank" href="/evozap-2/new-user">Agregar Participante</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Administrativo</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Confg. Formulario</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/evozap-2/pages/admin/formulario.php">Confg. Formulario</a></li>
               </ul>
             </div>
           </li>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,14 +19,31 @@
                     <h5 class="modal-title" id="exampleModalLabel">Se ha Registrado correctamente <img src="img/confirmacion.gif" alt="img_confirmacion" width="10%"></h5>
                 </div>
                 <div class="modal-body d-flex">
-                    Tenga en cuenta las fechas de su formación.
+                    Se ha registrado correctamente, le enviamos un correo electrónico de confirmación, por favor esté atento(a) en los próximos días.
                 </div>
                 <div class="modal-footer">
-                    <a href="../index.php" type="button" style="background:#0891b2; color:#fff;" class="btn">De acuerdo</a>
+                    <a href="../index.php" type="button" style="background:#4b49ac; color:#fff;" class="btn">De acuerdo</a>
                 </div>
                 </div>
             </div>
             </div>
+
+            <!-- Modal Error-->
+            <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="modalError" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+                </div>
+                <div class="modal-body d-flex">
+                    Lo siento algo salió mal, por favor comuníquese con nuestras líneas de atención: 3123 123 123
+                </div>
+                <div class="modal-footer">
+                    <a href="../index.php" type="button" style="background:#4b49ac; color:#fff;" class="btn">volver a intentar</a>
+                </div>
+                </div>
+            </div>
+            </div>            
 <?php
 // Función para sanitizar datos
 function sanitizeInput($input) {
@@ -46,10 +63,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $detalle_tratamiento = isset($_POST["detalle_tratamiento"]) ? sanitizeInput($_POST["detalle_tratamiento"]) : "";
     $cedula_referido = isset($_POST["cedula_referido"]) ? sanitizeInput($_POST["cedula_referido"]) : "";
     $checkAcuerdo = isset($_POST["checkAcuerdo"]) ? $_POST["checkAcuerdo"] : "";
-
-    $nombreEntrenamiento = "PL59";
-    $fechaInicioEntrenamiento = "19/01/2024";
-    $fechaFinEntrenamiento = "22/01/2024";
+    $nombreEntrenamiento = isset($_POST["nombre_entrenamiento"]) ? $_POST["nombre_entrenamiento"] : "";
+    $fechaInicioEntrenamiento = isset($_POST["fechaInicio"]) ? $_POST["fechaInicio"] : "";
+    $fechaFinEntrenamiento = isset($_POST["fechaFin"]) ? $_POST["fechaFin"] : "";
     $estado_matricula = "Pendiente";
 
     // Validar datos (ejemplo simple)
@@ -69,16 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
             echo '<p>Correo electrónico no válido.</p>';
         } else {
-            // Imprimir los valores o redirigir a otra página
-            //echo "Nombre: $nombre <br>";
-            //echo "Cedula: $cedula <br>";
-            //echo "Celular: $celular <br>";
-            //echo "Correo: $correo <br>";
-            //echo "Objetivos: $objetivos <br>";
-            //echo "Tratamientos: $tratamientos <br>";
-            //echo "Detalle tratamiento: $detalle_tratamiento <br>";
-            //echo "Cedula Referido: $cedula_referido <br>";
-            //echo "Check Acuerdo: $checkAcuerdo <br>";
+
             
             //requerimos la conexion
             require 'conexion.php';
@@ -130,8 +137,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 myModal.show();
             </script>';
             } else {
-                echo "Falló la insersión.";
-                $conexion->closeConnection();
+                echo '<script>
+                var myModalError = new bootstrap.Modal(document.getElementById("modalError"));
+                myModalError.show();
+            </script>';
             }
 
             // Cierra la conexión cuando hayas terminado
@@ -146,7 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-      <!--[if lt IE 10]>
+      <!--[if lt IE 10]-->
 </body>
 </html>
 
