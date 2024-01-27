@@ -5,7 +5,6 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require "../plantilla/header.php"?>
 <!--Requerimos el encabezado-->
-<link rel="stylesheet" href="css/participantes.css">
 
       <!-- Contenido central -->
       <div class="main-panel">
@@ -45,7 +44,7 @@ require "../plantilla/header.php"?>
                           $resultado = $conn->query($sql);
 
                           while ($fila = $resultado->fetch_assoc()) { ?>
-                            <tr>
+                            <tr style="cursor:pointer;">
                                 <td><?php echo $fila['id'] ?></td>
                                 <td><?php echo $fila['nombre'] ?></td>
                                 <td><?php echo $fila['cedula'] ?></td>
@@ -69,7 +68,97 @@ require "../plantilla/header.php"?>
                     </table>
                   </div>
 
-      </div>
+              </div>
+               <!-- Modal muestra informacion -->
+               <div class="modal fade" id="modalFichaParticipante" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog mt-2">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h4 class="modal-title me-4">Información Personal</h4>
+                  </div>
+                  <div class="modal-body p-0">
+                     <form>
+                        <div class="card">
+                           <div class="row no-gutters">
+                              <div class="card-body">
+                                 <div class="row">
+                                    <div class="col-md-7">
+                                       <input type="hidden" id="idParticipante" name="idParticipante" readonly>
+                                       <label class="mb-2">Nombre:</label>
+                                       <input type="text" class="form-control form-control-sm no-editar text-dark transition" id="nombreParticipante" name="nombreParticipante" readonly>
+                                    </div>
+                                    <div class="col-md-5">
+                                       <label class="mb-2 form-label">Cedula:</label>
+                                       <input type="text" class="form-control form-control-sm no-editar text-dark transition" id="cedulaParticipante" name="cedulaParticipante" readonly>
+                                    </div>
+                                    <div class="col-md-6 pt-2">
+                                       <label class="mb-2">Tipo Doc:</label>
+                                       <select class="form-select form-control form-control-sm no-editar text-dark transition" aria-label="Default select example"  id="tipoDocumentoParticipante" name="tipoDocumentoParticipante" disabled required>
+                                          <option selected></option>
+                                          <option value="C.C">C.C</option>
+                                          <option value="C.E">C.E</option>
+                                          <option value="PASAPORTE">PASAPORTE</option>
+                                       </select>
+                                    </div>
+                                    <div class="col-md-6 pt-2">
+                                       <label class="mb-2">Celular:</label>
+                                       <input type="text" class="form-control form-control-sm no-editar text-dark transition" id="celularParticipante" name="celularParticipante" readonly>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="col-md-6 pt-2">
+                                       <label class="pt-2 mb-2">Correo:</label>
+                                       <input type="text" class="form-control form-control-sm no-editar text-dark transition" id="correoParticipante" name="correoParticipante" readonly>
+                                    </div>
+                                    <div class="col-md-6 pt-2">
+                                       <label class="pt-2 mb-2">Objetivos:</label>
+                                       <textarea class="form-control form-control-sm no-editar text-dark transition" name="objetivosParticipante" id="objetivosParticipante" readonly></textarea>
+                                    </div>
+                                    <div class="col-md-6 pt-2">
+                                       <label class="pt-2 mb-2">¿tratamiento Psicológico?:</label>
+                                       <input type="text" class="form-control form-control-sm no-editar text-dark transition" id="tratamientoParticipante" name="tratamientoParticipante" readonly>
+                                    </div>
+                                    <div class="col-md-6 pt-2">
+                                       <label class="pt-2 mb-2">Detalles Tratamiento:</label>
+                                       <textarea class="form-control form-control-sm no-editar text-dark transition" name="detalleTratamientoParticipante" id="detalleTratamientoParticipante" readonly></textarea>
+                                    </div>
+                                 </div>
+                                 <hr>
+                                 <h4 class="mb-2" id="exampleModalLabel">Referido Por</h4>
+                                 <div class="row">
+                                    <div class="col-md-6">
+                                       <label class="pt-2 mb-2">Nombre:</label>
+                                       <input type="text" class="form-control form-control-sm editar" id="" name="" value="Andres Felipe Mondragon" readonly>
+                                    </div>
+                                    <div class="col-md-6">
+                                       <label class="pt-2 mb-2">Cedula:</label>
+                                       <input type="text" class="form-control form-control-sm editar" id="" name="" value="1007581003" readonly>
+                                    </div>
+                                    <div class="col-md-6">
+                                       <label class="pt-2 mb-2">Celular:</label>
+                                       <input type="text" class="form-control form-control-sm editar" id="" name="" value="324 589 4268" readonly>
+                                    </div>
+                                    <div class="col-md-6">
+                                       <label class="pt-2 mb-2">PL:</label>
+                                       <input type="text" class="form-control form-control-sm editar" id="" name="" value="PL40" readonly>
+                                    </div>
+                                    <div class="col-md-12">
+                                       <label class="pt-2 mb-2">Fecha y hora de Registro:</label>
+                                       <input type="text" class="form-control form-control-sm editar" id="fechaHoraRegistro" name="fechaHoraRegistro" readonly>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                  </div>
+                  <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      
       <!-- main-panel ends -->
     </div>   
   </div>

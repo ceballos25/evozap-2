@@ -14,6 +14,7 @@ ini_set('display_errors', 1); ?>
   <link rel="stylesheet" href="/evozap-2/vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
   <!-- Plugin css for this page -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <link rel="stylesheet" href="/evozap-2/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
   <!-- DataTables Buttons CSS -->
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.0/css/buttons.dataTables.min.css">

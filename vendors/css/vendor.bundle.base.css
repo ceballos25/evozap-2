@@ -119,6 +119,10 @@
   border: none !important;
 }
 
+.no-editar{
+  cursor: not-allowed !important;
+}
+
 /* MS supports */
 @supports (-ms-overflow-style: none) {
   .ps {
