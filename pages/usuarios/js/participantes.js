@@ -9,9 +9,23 @@ $(document).ready(function() {
             {
                 extend: 'excelHtml5',
                 text: '<i class="p-0 text-white mdi mdi-file-excel"></i>',
-                className: 'b-none mx-2 p-0 btn-sm bg-success btn btn-success btn-icon'
+                className: 'b-none mx-2 p-0 btn-sm bg-success btn btn-success btn-icon',
+                
+                init: function(api, node, config) {
+                    // Inicializar el tooltip
+                    $(node).tooltip({
+                        container: 'body',
+                        html: true,
+                        title: '<em>Exportar a Excel</em>',
+                    });
+                },
+                action: function (e, dt, button, config) {
+                    // Lógica de exportación a Excel
+                    dt.button(button).trigger();
+                }
             }
         ]
+        
     });
 
     $(document).ready(function () {

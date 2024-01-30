@@ -11,7 +11,7 @@ require "../plantilla/header.php"?>
         <div class="content-wrapper">
         <h2 class="text-center">Participantes</h2>
         <div class="table-responsive table-shadow">
-                    <table class="table table-hover" id="miTabla">
+                    <table class="table table-hover display expandable-table" id="miTabla">
 
                       <thead>
                         <tr>
@@ -29,7 +29,6 @@ require "../plantilla/header.php"?>
                           <th>Inicio Entrenamiento</th>
                           <th>Fin Entrenamiento</th>
                           <th>Fecha Registro</th>
-                          <th>Acciones</th>
                         </tr>
                       </thead>                      
                       <tbody>
@@ -59,7 +58,6 @@ require "../plantilla/header.php"?>
                                 <td><?php echo $fila['fecha_inicio_entrenamiento'] ?></td>
                                 <td><?php echo $fila['fecha_fin_entrenamineto'] ?></td>
                                 <td><?php echo date('d/m/Y h:i A', strtotime($fila['fecha_registro'])) ?></td>
-                                <td></td> <!-- Puedes agregar acciones específicas aquí si es necesario -->
                             </tr>
                         
                             

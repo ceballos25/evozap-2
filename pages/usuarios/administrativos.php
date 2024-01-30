@@ -11,7 +11,7 @@ require "../plantilla/header.php"?>
         <h2 class="text-center">Administrativos</h2>
         <button class="btn btn-success btn-sm mb-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Agregar Administrativo" id="btnAddAdministrativo"><i class="mdi mdi-account-plus"></i></button>
         <div class="table-responsive table-shadow">
-                    <table class="table table-hover" id="tableAdministrativos">
+                    <table class="table table-hover display expandable-table" id="tableAdministrativos">
 
                       <thead>
                         <tr>
@@ -23,7 +23,6 @@ require "../plantilla/header.php"?>
                           <th>Dirección</th>
                           <th>Cargo</th>
                           <th>Rol Sistema</th>
-                          <th>Acciones</th>
                         </tr>
                       </thead>                      
                       <tbody>
@@ -47,7 +46,6 @@ require "../plantilla/header.php"?>
                                 <td class="text-uppercase"><?php echo $fila['direccion'] ?></td>
                                 <td class="text-uppercase"><?php echo $fila['correo'] ?></td>
                                 <td><?php echo $fila['rol'] ?></td>
-                                <td></td>
                             </tr>
                         
                             

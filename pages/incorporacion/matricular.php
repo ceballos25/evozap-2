@@ -37,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Cerrar la conexión
         $stmt->close();
-        $conn->close();
     }
 } else {
     // No se recibieron datos por POST, mostrar mensaje de error

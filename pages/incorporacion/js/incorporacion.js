@@ -15,43 +15,43 @@ $(document).ready(function () {
  
  
  $(document).ready(function () {
-    // Agrega un evento clic a todas las filas de la tabla
-    $('#miTabla tbody').on('click', 'tr', function () {
-       // Obtiene los datos de la fila clicada
-       var id = $(this).find('td:eq(0)').text();
-       var nombre = $(this).find('td:eq(1)').text();
-       var cedula = $(this).find('td:eq(2)').text();
-       var tipo_documento = $(this).find('td:eq(3)').text();
-       var celular = $(this).find('td:eq(4)').text();
-       var correo = $(this).find('td:eq(5)').text();
-       var objetivos = $(this).find('td:eq(6)').text();
-       var tratamiento = $(this).find('td:eq(7)').text();
-       var detalle_tratamiento = $(this).find('td:eq(8)').text();
-       var cedula_referido = $(this).find('td:eq(9)').text();
-       var fecha_registro = $(this).find('td:eq(14)').text();
- 
- 
-       // Puedes continuar obteniendo otros datos según sea necesario
- 
-       // Configura el contenido del modal con los datos de la fila
-       $('#idParticipante').val(id);
-       $('#nombreParticipante').val(nombre);
-       $('#cedulaParticipante').val(cedula);
-       $('#tipoDocumentoParticipante').val(tipo_documento);
-       $('#celularParticipante').val(celular);
-       $('#correoParticipante').val(correo);
-       $('#objetivosParticipante').val(objetivos);
-       $('#tratamientoParticipante').val(tratamiento);
-       $('#detalleTratamientoParticipante').val(detalle_tratamiento);
-       $('#cedulaReferidoParticipante').val(cedula_referido);
-       $('#cfechaRegistroParticipante').val(fecha_registro);
- 
-       // Agrega más líneas según sea necesario para otros datos
- 
-       // Abre el modal
-       $('#modalFichaParticipante').modal('show');
-    });
- });
+   
+   // Agrega un evento clic a todas las filas de la tabla
+   $('#miTabla tbody').on('click', 'tr', function () {
+      // Obtiene los datos de la fila clicada
+      var id = $(this).find('td:eq(0)').text();
+      var nombre = $(this).find('td:eq(1)').text();
+      var cedula = $(this).find('td:eq(2)').text();
+      var tipo_documento = $(this).find('td:eq(3)').text();
+      var celular = $(this).find('td:eq(4)').text();
+      var correo = $(this).find('td:eq(5)').text();
+      var objetivos = $(this).find('td:eq(6)').text();
+      var tratamiento = $(this).find('td:eq(7)').text();
+      var detalle_tratamiento = $(this).find('td:eq(8)').text();
+      var cedula_referido = $(this).find('td:eq(9)').text();
+      var fecha_registro = $(this).find('td:eq(14)').text();
+
+      // Configura el contenido del modal con los datos de la fila
+      $('#idParticipante').val(id);
+      $('#nombreParticipante').val(nombre);
+      $('#cedulaParticipante').val(cedula);
+      $('#tipoDocumentoParticipante').val(tipo_documento);
+      $('#celularParticipante').val(celular);
+      $('#correoParticipante').val(correo);
+      $('#objetivosParticipante').val(objetivos);
+      $('#tratamientoParticipante').val(tratamiento);
+      $('#detalleTratamientoParticipante').val(detalle_tratamiento);
+      $('#cedulaReferidoParticipante').val(cedula_referido);
+      $('#cfechaRegistroParticipante').val(fecha_registro);
+
+      // Agrega más líneas según sea necesario para otros datos
+
+      // Abre el modal
+      $('#modalFichaParticipante').modal('show');
+
+   });
+});
+
  
  
  $(document).ready(function () {
@@ -111,10 +111,11 @@ $(document).ready(function () {
           type: 'POST',
           url: 'editar-participante.php',
           data: formData,
-          success: function (response) {
+          success: function () {
              // Ocultar el modal de edición
              $('#modalFichaParticipante').modal('hide');
-             console.log(response);
+            // Mostrar alerta de confirmación
+            alert('El participante ha sido Editado.');
  
  
              // Pasar la variables id del formulario para matricular
@@ -228,3 +229,73 @@ $(document).ready(function () {
        });
     });
  });
+
+ //tooltips personalizdo
+ document.addEventListener('DOMContentLoaded', function () {
+   var tooltipContainers = document.querySelectorAll('.tooltip-container');
+
+   tooltipContainers.forEach(function (container) {
+       var button = container.querySelector('.btn');
+       var tooltip = container.querySelector('.tooltip-mio');
+
+       button.addEventListener('mouseover', function () {
+           tooltip.classList.add('show');
+       });
+
+       button.addEventListener('mouseout', function () {
+           tooltip.classList.remove('show');
+       });
+   });
+});
+
+
+//evento para mostrar el modal de confirnmación eliminar y pasarle el id a eliminar
+$(document).ready(function () {
+   // Agrega un evento clic al botón con el ID btnEliminar
+   $('#btnEliminar').on('click', function () {
+       // Muestra el modal (asegúrate de tener un modal con el ID modalEliminar)
+       $('#modalConfirmarEliminar').modal('show');
+       $('#modalFichaParticipante').modal('hide');
+
+       var valorIdParticipanteEliminar = $('#idParticipante').val();
+       $('#idParticipanteeliminar').val(valorIdParticipanteEliminar);
+   });
+
+       // Evento submit del formulario modalConfirmarEdicion
+       $('#modalConfirmarEliminar form').submit(function (event) {
+         event.preventDefault(); // Prevenir el envío del formulario por defecto
+   
+         // Obtener los datos del formulario
+         var formData = $(this).serialize();
+   
+         // Realizar la solicitud Ajax
+         $.ajax({
+            type: 'POST',
+            url: 'eliminar.php',
+            data: formData,
+            success: function (response) {
+               // Ocultar el modal de edición
+               $('#modalConfirmarEliminar').modal('hide');
+   
+               // Analizar la respuesta JSON
+               var jsonResponse = JSON.parse(response);
+   
+               // Verificar el estado de la respuesta
+               if (jsonResponse.status === 'success') {
+                  // Mostrar alerta de confirmación
+                  alert('El participante ha sido Eliminado.');
+                  // Recargar la tabla
+                  location.reload();
+               } else {
+                  // Mostrar alerta de error si la matrícula falló
+                  alert('Error al eliminar: ' + jsonResponse.message);
+               }
+            },
+            error: function (error) {
+               // Manejar errores de la solicitud
+               alert('Algo salió mal');
+               console.log(error.responseText);
+            }
+         });
+      });
+});

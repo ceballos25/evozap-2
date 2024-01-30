@@ -11,7 +11,7 @@
    <div class="content-wrapper">
       <h2 class="text-center">Incorporación</h2>
       <div class="table-responsive table-shadow">
-         <table class="table table-hover" id="miTabla">
+         <table class="table table-hover display expandable-table" id="miTabla">
             <thead>
                <tr>
                   <th>Id</th>
@@ -29,7 +29,6 @@
                   <th>Fin Entrenamiento</th>
                   <th>Estado</th>
                   <th>Fecha Registro</th>
-                  <th>Acciones</th>
                </tr>
             </thead>
             <tbody>
@@ -66,20 +65,41 @@
                      }                                
                      ?></td>
                   <td><?php echo date('d/m/Y h:i A', strtotime($fila['fecha_registro'])) ?></td>
-                  <td></td>
                </tr>
                <?php } ?>
             </tbody>
          </table>
+
          <!-- Modal muestra informacion -->
          <div class="modal fade" id="modalFichaParticipante" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog mt-2">
                <div class="modal-content">
                   <div class="modal-header">
                      <h4 class="modal-title me-4">Información Personal</h4>
-                     <span class="p-2 btn btn-outline-success float-left" id="matricular_1">Matricular <i class="mdi mdi-account-check"></i></span>
-                     <span class="p-2 btn btn-outline-dark float-rigth" id="habilitarEditar">Editar <i class="mdi mdi-pencil"></i></span>
+                     <div class="bnts-action">
+                     <span class="tooltip-container">
+                        <span class="p-2 btn btn-outline-success" id="matricular_1" data-tooltip="Matricular">
+                              <i class="mdi mdi-account-check"></i>
+                        </span>
+                        <div class="tooltip-mio">Matricular</div>
+                     </span>
+                     
+                     <span class="tooltip-container">
+                        <span class="p-2 btn btn-outline-dark" id="habilitarEditar" data-tooltip="Editar">
+                              <i class="mdi mdi-pencil"></i>
+                        </span>
+                        <div class="tooltip-mio">Editar</div>
+                     </span>
+                     
+                     <span class="tooltip-container">
+                        <span class="p-2 btn btn-outline-danger" id="btnEliminar" data-tooltip="Eliminar">
+                              <i class="mdi mdi-delete"></i>
+                        </span>
+                        <div class="tooltip-mio">Eliminar</div>
+                     </span>
                   </div>
+
+                   </div>
                   <div class="modal-body p-0">
                      <form method="POST" action="editar-participante.php">
                         <div class="card">
@@ -190,6 +210,85 @@
          <div class="modal-footer">
          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
          <button type="submit" class="btn btn-primary">Sí, Matricular</button>
+         </div>
+         </form>
+      </div>
+   </div>
+</div>
+
+<!--Modal confirmacion eliminar -->
+<div class="modal fade" id="modalConfirmarEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog mt-2">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h3 class="modal-title me-4">Confirmación <i class="mdi mdi-help-circle"></i></h3>
+         </div>
+         <div class="modal-body p-0">
+            <div class="card">
+               <div class="row no-gutters">
+                  <div class="card-body">
+                     <form>
+                        <h5>Está completamente seguro de eliminar el aspirante?</h5>
+                        <input id="idParticipanteeliminar" name="idParticipanteeliminar" type="text">
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+         <button type="submit" class="btn btn-primary">Sí, Eliminar</button>
+         </div>
+         </form>
+      </div>
+   </div>
+</div>
+
+<!--Modal confirmacion eliminado -->
+<div class="modal fade" id="modalEliminadoconfirmado" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog mt-2">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h3 class="modal-title me-4">Confirmación <i class="mdi mdi-help-circle"></i></h3>
+         </div>
+         <div class="modal-body p-0">
+            <div class="card">
+               <div class="row no-gutters">
+                  <div class="card-body">
+                     <form>
+                        <h5>EL participante ha sido Eliminado, correctamente</h5>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+         <button type="submit" class="btn btn-primary">Sí, Eliminar</button>
+         </div>
+         </form>
+      </div>
+   </div>
+</div>
+
+<!--Modal confirmacion eliminado -->
+<div class="modal fade" id="modalEliminadoconfirmado" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog mt-2">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h3 class="modal-title me-4">Confirmación <i class="mdi mdi-help-circle"></i></h3>
+         </div>
+         <div class="modal-body p-0">
+            <div class="card">
+               <div class="row no-gutters">
+                  <div class="card-body">
+                     <form>
+                        <h5>EL participante ha sido Eliminado, correctamente</h5>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+         <button type="submit" class="btn btn-primary">Sí, Eliminar</button>
          </div>
          </form>
       </div>
