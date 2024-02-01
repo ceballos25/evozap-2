@@ -138,7 +138,7 @@ ini_set('display_errors', 1); ?>
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="/evozap-2/pages/usuarios/participantes.php">Participantes</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/evozap-2/pages/usuarios/administrativos.php">Administrativos</a></li>
-              </ul>
+                <li class="nav-item"> <a class="nav-link" href="/evozap-2/pages/usuarios/pls.php">Pl's</a></li>
             </div>
           </li>
 
